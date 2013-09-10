@@ -33,7 +33,11 @@ N/A
 
 == Changelog ==
 
-N/A
+= 1.1 =
+* Add default select option 
+
+= 1.1 =
+* Initial release
 
 == Upgrade Notice ==
 
