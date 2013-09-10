@@ -3,7 +3,7 @@
 Plugin Name: Category Wise Search Widget
 Plugin URI: http://wordpress.org/extend/plugins/category-wise-search/
 Description: Category Wise Search Widget plugin.You have option search specific category content
-Version: 1.0
+Version: 1.1
 Author: Shambhu Prasad Patnaik
 Author URI:http://aynsoft.com/
 */
@@ -37,11 +37,10 @@ class Category_Wise_Search_Widget extends WP_Widget {
  	 $default_select_text = 'Any Category';
    	 $show_count     = ! empty( $instance['count'] ) ? '1' : '0';
 	 $show_hierarchy = ! empty( $instance['show_hierarchy'] ) ? '1' : '0';
-     
-	 $cat_args = array('show_count' => $show_count, 'hierarchical' => $show_hierarchy,'show_option_all'=>$default_select_text,'echo'=>0,'id'=>'searchform_cat');
-
-
-	 //print_r($r);die();
+ 	 $default_cat    = isset( $instance['default_cat'] ) ? absint( $instance['default_cat'] ) : 0;
+     if(isset($_GET['cat']))
+     $default_cat =absint($_GET['cat']);
+	 $cat_args = array('selected'=>$default_cat,'show_count' => $show_count, 'hierarchical' => $show_hierarchy,'show_option_all'=>$default_select_text,'echo'=>0,'id'=>'searchform_cat');
      ?>
 	 <?php echo $before_widget; ?>
 	 <?php if ( $title ) echo $before_title . $title . $after_title; ?>
@@ -78,6 +77,7 @@ class Category_Wise_Search_Widget extends WP_Widget {
 		$instance['default_select_text'] = strip_tags( $new_instance['default_select_text'] );
 		if($instance['default_select_text']=='')
 		$instance['default_select_text'] = 'Any Category';
+    	$instance['default_cat'] = ($new_instance['default_cat']);
 		$instance['count'] = !empty($new_instance['count']) ? 1 : 0;
 		$instance['show_hierarchy'] = !empty($new_instance['show_hierarchy']) ? 1 : 0;
 		return $instance;
@@ -100,7 +100,8 @@ class Category_Wise_Search_Widget extends WP_Widget {
 	  $default_select_text = __( 'Any Category', 'text_domain' );
  	 }
 	 $count = isset($instance['count']) ? (bool) $instance['count'] :false;
-	 $show_hierarchy = isset( $instance['show_hierarchy'] ) ? (bool) $instance['show_hierarchy'] : false;
+	 $show_hierarchy = isset( $instance['show_hierarchy'] ) ? (bool) $instance['show_hierarchy'] : true;
+	 $default_cat    = isset($instance['default_cat'] ) ? absint($instance['default_cat']) : 0;
 	?>
 	 <p>
 	  <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
@@ -110,6 +111,11 @@ class Category_Wise_Search_Widget extends WP_Widget {
 	  <label for="<?php echo $this->get_field_id( 'default_select_text' ); ?>"><?php _e( 'Default select box text:' ); ?></label> 
 	   <input class="widefat" id="<?php echo $this->get_field_id( 'default_select_text' ); ?>" name="<?php echo $this->get_field_name( 'default_select_text' ); ?>" type="text" value="<?php echo esc_attr( $default_select_text); ?>" />
 	 </p>
+	 <p>
+	  <label for="<?php echo $this->get_field_id( 'default_cat' ); ?>"><?php _e( 'Default select category :' ); ?></label> 
+	   <?php $cat_arg = array( 'hierarchical' => 1,'selected'=>$default_cat,'show_option_all'=>($default_select_text!='')?esc_attr( $default_select_text):esc_attr( $default_select_text),'echo'=>0,'id'=>$this->get_field_id( 'default_cat' ),'name'=>$this->get_field_name( 'default_cat' ),'class'=>'widefat');
+          echo wp_dropdown_categories($cat_arg);?>
+	 </p>	 
 	 <p>
 	  <input class="checkbox" type="checkbox" <?php checked( $show_hierarchy ); ?> id="<?php echo $this->get_field_id( 'show_hierarchy' ); ?>" name="<?php echo $this->get_field_name( 'show_hierarchy' ); ?>" />
 	  <label for="<?php echo $this->get_field_id( 'show_hierarchy' ); ?>"><?php _e( 'Show hierarchy' ); ?></label><br />
