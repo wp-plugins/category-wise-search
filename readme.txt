@@ -1,5 +1,5 @@
 === Category Wise Search ===
-Contributors: shambhu patanik
+Contributors: shambhu patnaik
 Donate link: http://aynsoft.com/
 Tags: category wise search widget,widget,search,search by category
 Requires at least: 3.0.1
