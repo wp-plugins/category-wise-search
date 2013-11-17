@@ -1,9 +1,9 @@
 === Category Wise Search ===
-Contributors: shambhu patanik
+Contributors: shambhu patnaik
 Donate link: http://aynsoft.com/
 Tags: category wise search widget,widget,search,search by category
 Requires at least: 3.0.1
-Tested up to: 3.6
+Tested up to: 3.7.1
 Stable tag: 1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
