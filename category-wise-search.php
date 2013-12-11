@@ -3,7 +3,7 @@
 Plugin Name: Category Wise Search Widget
 Plugin URI: http://wordpress.org/extend/plugins/category-wise-search/
 Description: Category Wise Search Widget plugin.You have option search specific category content
-Version: 1.1
+Version: 1.2
 Author: Shambhu Prasad Patnaik
 Author URI:http://aynsoft.com/
 */
