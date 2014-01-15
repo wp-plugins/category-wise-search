@@ -3,7 +3,7 @@
 Plugin Name: Category Wise Search Widget
 Plugin URI: http://wordpress.org/extend/plugins/category-wise-search/
 Description: Category Wise Search Widget plugin.You have option search specific category content
-Version: 1.2
+Version: 1.2.1
 Author: Shambhu Prasad Patnaik
 Author URI:http://aynsoft.com/
 */
@@ -41,7 +41,7 @@ class Category_Wise_Search_Widget extends WP_Widget {
  	 $exclude    = isset($instance['exclude'])?esc_attr($instance['exclude']):'';
      if(isset($_GET['cat']))
      $default_cat =absint($_GET['cat']);
-	 $cat_args = array('selected'=>$default_cat,'show_count' => $show_count, 'hierarchical' => $show_hierarchy,'show_option_all'=>$default_select_text,'echo'=>0,'id'=>'searchform_cat','exclude'=>$exclude);
+	 $cat_args = array('selected'=>$default_cat,'show_count' => $show_count, 'hierarchical' => $show_hierarchy,'show_option_all'=>$default_select_text,'echo'=>0,'id'=>'searchform_cat','exclude'=>$exclude,'orderby'=>'name','order' => 'asc');
      ?>
 	 <?php echo $before_widget; ?>
 	 <?php if ( $title ) echo $before_title . $title . $after_title; ?>

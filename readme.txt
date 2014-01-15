@@ -1,10 +1,10 @@
 === Category Wise Search ===
 Contributors: shambhu patnaik
 Donate link: http://aynsoft.com/
-Tags: category wise search widget,widget,search,search by category,exclude search category,filter search,search widget,search filter,search by category
+Tags: category wise search widget,widget,search,search by category,exclude search category,filter search,search widget,search filter,search by category,category,category wise search
 Requires at least: 2.9
-Tested up to: 3.7.1
-Stable tag: 1.2
+Tested up to: 3.8
+Stable tag: 1.2.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,6 +20,7 @@ Category Wise Search Widget plugin.You have option search specific category cont
 - Set default category.
 - Exclude categories in search category field.
 
+More detail : http://socialcms.wordpress.com/
 
 
 == Installation ==
@@ -39,6 +40,9 @@ N/A
 
 
 == Changelog ==
+
+= 1.2.1 =
+* fix category display order.
 
 = 1.2 =
 * Add exclude category option in category list.
