@@ -3,8 +3,8 @@ Contributors: shambhu patnaik
 Donate link: http://socialcms.wordpress.com/
 Tags: category wise search widget,widget,search,search by category,exclude search category,filter search,search widget,search filter,search by category,category,category wise search
 Requires at least: 2.9
-Tested up to: 4.1
-Stable tag: 1.2.1
+Tested up to: 4.1.1
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -19,6 +19,7 @@ Category Wise Search Widget plugin.You have option search specific category cont
 - Search post category wise.
 - Set default category.
 - Exclude categories in search category field.
+- Exclude categories with child in search category field.
 
 More detail : http://socialcms.wordpress.com/
 
@@ -40,6 +41,9 @@ N/A
 
 
 == Changelog ==
+
+= 1.3 =
+* Add exclude category  with its childs option in category list
 
 = 1.2.1 =
 * fix category display order.

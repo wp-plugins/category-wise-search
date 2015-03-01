@@ -3,7 +3,7 @@
 Plugin Name: Category Wise Search Widget
 Plugin URI: http://wordpress.org/extend/plugins/category-wise-search/
 Description: Category Wise Search Widget plugin.You have option search specific category content
-Version: 1.2.1
+Version: 1.3
 Author: Shambhu Prasad Patnaik
 Author URI:http://socialcms.wordpress.com/
 */
@@ -39,9 +39,10 @@ class Category_Wise_Search_Widget extends WP_Widget {
 	 $show_hierarchy = ! empty( $instance['show_hierarchy'] ) ? '1' : '0';
  	 $default_cat    = isset( $instance['default_cat'] ) ? absint( $instance['default_cat'] ) : 0;
  	 $exclude    = isset($instance['exclude'])?esc_attr($instance['exclude']):'';
+ 	 $exclude_t  = isset($instance['exclude_t'])?esc_attr($instance['exclude_t']):'';
      if(isset($_GET['cat']))
      $default_cat =absint($_GET['cat']);
-	 $cat_args = array('selected'=>$default_cat,'show_count' => $show_count, 'hierarchical' => $show_hierarchy,'show_option_all'=>$default_select_text,'echo'=>0,'id'=>'searchform_cat','exclude'=>$exclude,'orderby'=>'name','order' => 'asc');
+	 $cat_args = array('selected'=>$default_cat,'show_count' => $show_count, 'hierarchical' => $show_hierarchy,'show_option_all'=>$default_select_text,'echo'=>0,'id'=>'searchform_cat','exclude'=>$exclude,'exclude_tree'=>$exclude_t,'orderby'=>'name','order' => 'asc');
      ?>
 	 <?php echo $before_widget; ?>
 	 <?php if ( $title ) echo $before_title . $title . $after_title; ?>
@@ -82,6 +83,7 @@ class Category_Wise_Search_Widget extends WP_Widget {
 		$instance['count'] = !empty($new_instance['count']) ? 1 : 0;
 		$instance['show_hierarchy'] = !empty($new_instance['show_hierarchy']) ? 1 : 0;
 		$instance['exclude'] = strip_tags($new_instance['exclude']);
+		$instance['exclude_t'] = strip_tags($new_instance['exclude_t']);
 		return $instance;
 	}
 
@@ -105,6 +107,7 @@ class Category_Wise_Search_Widget extends WP_Widget {
 	 $show_hierarchy = isset( $instance['show_hierarchy'] ) ? (bool) $instance['show_hierarchy'] : true;
 	 $default_cat    = isset($instance['default_cat'] ) ? absint($instance['default_cat']) : 0;
 	 $exclude    = isset($instance['exclude'] ) ? strip_tags($instance['exclude']) : '';
+	 $exclude_t  = isset($instance['exclude_t'] ) ? strip_tags($instance['exclude_t']) : '';
 	?>
 	 <p>
 	  <label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
@@ -117,6 +120,10 @@ class Category_Wise_Search_Widget extends WP_Widget {
 	 <p><label for="<?php echo $this->get_field_id('exclude'); ?>"><?php _e( 'Exclude Categories :' ); ?></label>
 		<input class="widefat" id="<?php echo $this->get_field_id('exclude'); ?>" name="<?php echo $this->get_field_name('exclude'); ?>" type="text" value="<?php echo $exclude; ?>" />		
 		<br>Enter a comma seperated category ID.<br>ex : <code>2,3</code> &nbsp;&nbsp;(This widget will display all of your categories except these categories).
+	 </p>
+	 <p><label for="<?php echo $this->get_field_id('exclude_t'); ?>"><?php _e( 'Exclude Categories With Childs :' ); ?></label>
+		<input class="widefat" id="<?php echo $this->get_field_id('exclude_t'); ?>" name="<?php echo $this->get_field_name('exclude_t'); ?>" type="text" value="<?php echo $exclude_t; ?>" />		
+		<br>Enter a comma seperated category ID.<br>ex : <code>1,4</code> &nbsp;&nbsp;(This widget will display all of your categories except these categories and its childs).
 	 </p>
 	 <p>
 	  <label for="<?php echo $this->get_field_id( 'default_cat' ); ?>"><?php _e( 'Default select category :' ); ?></label> 
