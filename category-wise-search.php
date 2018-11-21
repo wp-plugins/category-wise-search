@@ -141,7 +141,9 @@ class Category_Wise_Search_Widget extends WP_Widget {
 } // class Category_Wise_Search
 
 // register Category_Wise_Search_Widget widget
-add_action( 'widgets_init', create_function( '', 'register_widget( "Category_Wise_Search_Widget" );' ) );
+add_action( 'widgets_init', function () {
+	register_widget( "Category_Wise_Search_Widget" );
+});
 register_deactivation_hook(__FILE__, 'shambhu_plugin_deactivate');
 
 function shambhu_plugin_deactivate ()
